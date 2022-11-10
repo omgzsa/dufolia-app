@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  section {
+    @apply mb-16 sm:mb-24 px-4
+  }
+
+  h1 {
+    @apply font-display font-bold text-4xl sm:text-6xl mb-8
+  }
+
+  h2 {
+    @apply font-display font-bold text-3xl sm:text-5xl mb-8
+  }
+
+  h3 {
+    @apply font-display font-bold text-lg sm:text-xl mb-2
+  }
+}
+
+#app {
+  max-width: 1440px;
+  margin: 0 auto;
+  /* padding-inline: 1rem; */
+
+  font-weight: normal;
+}
