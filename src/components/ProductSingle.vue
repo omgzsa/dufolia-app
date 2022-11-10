@@ -1,6 +1,5 @@
 <script setup>
-// import { useGetProductImage } from "@/composables/useGetProductImage";
-// import { onMounted } from "vue";
+import { useGetProductImage } from "@/composables/useGetProductImage";
 defineProps({
   productDetails: Object,
   url: String,
@@ -14,10 +13,13 @@ defineProps({
     <hr />
     <p>{{ productDetails.price }}</p>
     <hr />
+    <!--
+       ENABLE COMMENTED LINK BELOW TO REPRODUCE BUG
+     -->
     <!-- <img
       :src="useGetProductImage(productDetails.image.data.attributes.url)"
       alt=""
     /> -->
-    <pre>{{ productDetails.image.data.attributes.url }}</pre>
+    <pre>{{ productDetails }}</pre>
   </div>
 </template>
