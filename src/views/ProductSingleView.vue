@@ -1,34 +1,50 @@
 <script setup>
-import { onMounted, ref, defineAsyncComponent } from "vue";
+import { ref, onBeforeMount } from "vue";
 import { useRoute } from "vue-router";
-// import ProductSingle from "@/components/ProductSingle.vue";
+import ProductSingle from "@/components/ProductSingle.vue";
 
-const ProductSingle = defineAsyncComponent(() =>
-  import("@/components/ProductSingle.vue")
-);
+import { useCartStore } from "../stores/CartStore";
 
-let productDetails = ref({});
+const imageLink = import.meta.env.VITE_STRAPI_URL;
+const cartStore = useCartStore();
+
+// cartStore.$onAction(({ name, store, args, after, onError }) => {
+//   if (name == "addItems") {
+//     after(() => {
+//       console.log(args[0]);
+//     });
+//   }
+// });
+
+let product = ref({});
+const loading = ref(null);
 const route = useRoute();
 const error = ref(null);
 const url = import.meta.env.VITE_STRAPI_URL;
 
 const apiUrl = url + "/api/products/" + route.params.id + "?populate=*";
 
-onMounted(() => {
-  fetchAllProductDetails();
-  console.log(productDetails);
+onBeforeMount(() => {
+  getProduct();
 });
 
-const fetchAllProductDetails = () => {
+const getProduct = () => {
+  loading.value = true;
   fetch(apiUrl)
     .then((response) => response.json())
     .then((data) => {
-      productDetails.value = data.data.attributes;
-      console.log(productDetails.value);
+      product.value = data.data;
+      loading.value = false;
     })
     .catch((err) => (error.value = err));
 };
 </script>
 <template>
-  <ProductSingle :product-details="productDetails" :url="url" />
+  <div v-if="product">
+    <ProductSingle
+      :product="product"
+      :imageLink="imageLink"
+      @addItems="cartStore.addItems($event, product)"
+    />
+  </div>
 </template>

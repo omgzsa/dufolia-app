@@ -12,6 +12,6 @@ defineProps({
   >
     <img :src="useGetImageUrl(item.img)" class="mx-auto mb-4" />
     <h3 class="mb-4">{{ item.title }}</h3>
-    <p class="text-slate-500 font-semibold">{{ item.text }}</p>
+    <p class="text-slate-500">{{ item.text }}</p>
   </div>
 </template>

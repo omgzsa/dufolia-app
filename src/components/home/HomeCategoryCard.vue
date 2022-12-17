@@ -6,7 +6,7 @@ defineProps({
 </script>
 
 <template>
-  <router-link
+  <div
     to="#"
     class="cursor-pointer flex flex-col place-items-center mx-auto max-w-xs overflow-hidden transition-transform duration-300 hover:-translate-y-1"
   >
@@ -25,7 +25,7 @@ defineProps({
         {{ category.attributes.name }}
       </span>
     </div>
-  </router-link>
+  </div>
 </template>
 
 <style>

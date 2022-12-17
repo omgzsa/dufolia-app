@@ -4,6 +4,7 @@ import HomeHero from "../components/home/HomeHero.vue";
 import ProductFeatured from "../components/home/HomeProductFeatured.vue";
 import HomeCategoriesList from "../components/home/HomeCategoriesList.vue";
 import HomeBenefitsList from "../components/home/HomeBenefitsList.vue";
+import HomeCallToAction from "../components/home/HomeCallToAction.vue";
 
 const imageLink = import.meta.env.VITE_STRAPI_URL;
 
@@ -34,27 +35,33 @@ const benefits = ref([
 <template>
   <div>
     <!-- HERO SECTION -->
-    <section>
+    <section class="max-w-screen-2xl mx-auto">
       <HomeHero>
         <template #title>
-          <h1>Házfelújítás, építkezés egyszerűen, igényeidre szabva</h1>
+          <h1 class="mt-12">
+            Házfelújítás, építkezés egyszerűen, igényeidre szabva
+          </h1>
         </template>
       </HomeHero>
     </section>
     <!-- FEATURED PRODUCTS -->
-    <section>
+    <section class="max-w-screen-2xl mx-auto">
       <h2 class="text-center mb-16">Kiemelt termékeink</h2>
       <ProductFeatured class="px-2 py-2" :image-link="imageLink" />
     </section>
     <!-- CATEGORIES -->
-    <section>
+    <section class="max-w-screen-2xl mx-auto">
       <h2 class="text-center mb-16">Kategóriák</h2>
       <HomeCategoriesList :imageLink="imageLink" />
     </section>
     <!-- BENEFITS -->
-    <section>
-      <h2 class="text-center mb-16">Miért válaszd a dufóliát?</h2>
+    <section class="max-w-screen-2xl mx-auto">
+      <h2 class="text-center mb-16">Miért válaszd a Dufóliát?</h2>
       <HomeBenefitsList :benefits="benefits" />
+    </section>
+    <!-- PROFESSIONAL FEATURES -->
+    <section class="max-w-screen-2xl mx-auto">
+      <HomeCallToAction />
     </section>
   </div>
 </template>

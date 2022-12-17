@@ -14,11 +14,11 @@ const slides = ref([
   <div>
     <div class="mx-auto text-center max-w-2xl py-16">
       <slot name="title"></slot>
-      <p class="text-lg text-slate-500 font-semibold mb-10">
+      <p class="text-lg text-slate-500 font-semibold mb-12">
         Építkezési alapanyagok egyhelyen. 30 éve hivatásunk, hogy szakmai
         hozzáértésünkkel és minőségi termékeinkkel megkönnyítsük az építkezést.
       </p>
-      <AppButton> Termékeink </AppButton>
+      <AppButton :to="{ name: 'products' }"> Termékeink </AppButton>
     </div>
     <ImageCarousel :slides="slides" />
   </div>

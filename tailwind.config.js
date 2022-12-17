@@ -17,5 +17,9 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    "@tailwindcss/forms",
+    "@tailwindcss/aspect-ratio",
+    "@tailwindcss/typography",
+  ],
 };

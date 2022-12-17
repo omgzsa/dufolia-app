@@ -1,5 +1,5 @@
 import { ref } from "vue";
-import { defineStore } from "pinia";
+import { acceptHMRUpdate, defineStore } from "pinia";
 
 const error = ref(null);
 const apiUrl = import.meta.env.VITE_STRAPI_URL;
@@ -8,6 +8,7 @@ export const useProductStore = defineStore("ProductStore", {
   state: () => {
     return {
       products: [],
+      // product: {},
       productsFeatured: [],
     };
   },
@@ -27,11 +28,19 @@ export const useProductStore = defineStore("ProductStore", {
         .then((data) => (this.productsFeatured = data.data))
         .catch((err) => (error.value = console.log(err)));
     },
+    // async getProduct(productId) {
+    //   this.product = await fetch(apiUrl + "/api/products/" + productId)
+    //     .then((res) => res.json())
+    //     .then((data) => (this.product = data))
+    //     .catch((err) => (error.value = console.log(err)));
+    // },
   },
 
   getters: {
-    // featured(state) {
-    //   return state.products.data.filter((product) => product.featured);
-    // },
+    //
   },
 });
+
+if (import.meta.hot) {
+  import.meta.hot.accept(acceptHMRUpdate(useProductStore, import.meta.hot));
+}
