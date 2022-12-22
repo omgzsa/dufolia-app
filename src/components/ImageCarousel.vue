@@ -4,7 +4,7 @@ import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
 import { useGetImageUrl } from "../composables/getImageUrl";
 
 defineProps({
-  slides: Object,
+  slides: [Object, Array],
 });
 </script>
 

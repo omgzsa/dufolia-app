@@ -1,7 +1,6 @@
 <script setup>
 import IconTrash from "./IconTrash.vue";
 import { useGetProductImage } from "@/composables/useGetProductImage";
-import AppCountInput from "./AppCountInput.vue";
 
 defineProps({
   product: { type: Object, required: true },
@@ -31,6 +30,7 @@ defineEmits(["updateCount", "clear"]);
               {{ count * product.attributes.price }} Ft
             </p>
             <AppCountInput
+              class="space-x-1"
               :model-value="count"
               @update:modelValue="$emit('updateCount', $event)"
             />

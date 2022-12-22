@@ -21,13 +21,13 @@ const image = "illustration-house.png";
       :src="useGetImageUrl(image)"
       alt="színes illusztráció egy családi házról"
     />
-    <div class="">
+    <div class="flex flex-col items-center md:block">
       <h2 class="text-center md:text-left">A modern házak szakértője</h2>
       <ul class="grid place-content-start md:place-content-start mb-10">
         <li
           v-for="item in featureList"
           :key="item.id"
-          class="flex gap-2 mb-2 text-sm sm:text-base text-slate-500 font-semibold"
+          class="flex gap-2 mb-2 text-sm md:text-base text-slate-500 font-normal"
         >
           <IconCheck />{{ item.text }}
         </li>

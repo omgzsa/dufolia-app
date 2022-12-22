@@ -1,10 +1,12 @@
 <script setup>
 import { onMounted, onUnmounted, ref } from "vue";
-import { RouterLink } from "vue-router";
 
 // helpers
 import { useGetImageUrl } from "../composables/getImageUrl";
 import { onClickOutside } from "@vueuse/core";
+
+// store
+import { useCartStore } from "../stores/CartStore";
 
 // icons
 import IconMagnify from "./IconMagnify.vue";
@@ -12,6 +14,7 @@ import IconMenu from "./IconMenu.vue";
 import IconShoppingBag from "./IconShoppingBag.vue";
 
 const image = "dufolia-logo.png";
+const cartStore = useCartStore();
 
 let showMenu = ref(false);
 const toggleNav = () => (showMenu.value = !showMenu.value);
@@ -51,26 +54,36 @@ onUnmounted(() => {
     :class="{ 'navbar--hidden': !showNavbar }"
     ref="target"
   >
-    <div class="flex items-center justify-between space-x-4 py-2">
+    <div class="flex items-center justify-between space-x-2 py-2">
       <!-- LOGO -->
-      <RouterLink to="/">
+      <AppLink to="/">
         <img
           :src="useGetImageUrl(image)"
           alt="Dufolia logo"
           class="w-28 md:pr-2"
         />
-      </RouterLink>
+      </AppLink>
 
       <!-- CART BUTTON -->
-      <div class="order-2 md:hidden block">
-        <IconShoppingBag />
+      <div class="order-2 md:hidden flex flex-row items-center">
+        <AppLink
+          :to="{ name: 'cart', path: '/cart' }"
+          class="flex flex-row items-center"
+        >
+          <IconShoppingBag class="mr-1" />
+          <span
+            class="text-base font-semibold"
+            :class="{ 'text-accent': cartStore.count !== 0 }"
+            >{{ cartStore.count }}</span
+          >
+        </AppLink>
       </div>
 
       <!-- MOBILE MENU BUTTON -->
       <div @click="toggleNav" class="flex md:hidden order-3 pr-2">
         <button
           type="button"
-          class="text-gray-800 hover:text-gray-500 focus:outline-none focus:text-gray-500 pl-2"
+          class="text-gray-800 hover:text-gray-500 focus:outline-none focus:text-gray-500 pl-1"
         >
           <IconMenu />
         </button>
@@ -98,20 +111,20 @@ onUnmounted(() => {
       :class="showMenu ? 'flex' : 'hidden'"
       class="flex-col py-2 space-y-4 md:flex md:space-y-0 md:flex-row md:items-center md:space-x-10 md:mt-0"
     >
-      <RouterLink
+      <AppLink
         :to="{ name: 'home', path: '/' }"
         class="border-transparent text-gray-500 block pl-3 pr-4 py-2 border-l-4 hover:font-semibold hover:text-accent"
-        >Kezdőoldal</RouterLink
+        >Kezdőoldal</AppLink
       >
-      <RouterLink
+      <AppLink
         :to="{ name: 'about', path: '/about' }"
         class="border-transparent text-gray-500 block pl-3 pr-4 py-2 border-l-4 hover:font-semibold hover:text-accent"
-        >Rólunk</RouterLink
+        >Rólunk</AppLink
       >
-      <RouterLink
+      <AppLink
         :to="{ name: 'products', path: '/products' }"
         class="border-transparent text-gray-500 block pl-3 pr-4 py-2 border-l-4 hover:font-semibold hover:text-accent"
-        >Termékek</RouterLink
+        >Termékek</AppLink
       >
     </ul>
 
@@ -131,9 +144,17 @@ onUnmounted(() => {
     </div>
 
     <div class="order-3 md:block hidden">
-      <RouterLink :to="{ name: 'cart', path: '/cart' }">
-        <IconShoppingBag />
-      </RouterLink>
+      <AppLink
+        :to="{ name: 'cart', path: '/cart' }"
+        class="flex flex-row items-center"
+      >
+        <IconShoppingBag class="mr-1" />
+        <span
+          class="text-base font-semibold"
+          :class="{ 'text-accent': cartStore.count !== 0 }"
+          >{{ cartStore.count }}</span
+        >
+      </AppLink>
     </div>
   </nav>
 </template>

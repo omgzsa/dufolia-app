@@ -28,9 +28,9 @@ onBeforeMount(() => {
   getProduct();
 });
 
-const getProduct = () => {
+const getProduct = async () => {
   loading.value = true;
-  fetch(apiUrl)
+  await fetch(apiUrl)
     .then((response) => response.json())
     .then((data) => {
       product.value = data.data;

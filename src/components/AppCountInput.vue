@@ -16,7 +16,7 @@ const updateValue = (value) => {
 <template>
   <span class="flex items-center">
     <button
-      class="text-xs p-1 cursor-pointer text-gray-400 hover:text-primary-100"
+      class="text-xs p-1 cursor-pointer text-gray-600 hover:text-primary-100"
       @click="updateValue(modelValue > 0 ? modelValue - 1 : null)"
     >
       <IconMinus class="" />
@@ -29,7 +29,7 @@ const updateValue = (value) => {
       @input="updateValue($event.target.value)"
     />
     <button
-      class="text-xs p-1 text-gray-400 hover:text-primary-100 cursor-pointer"
+      class="text-xs p-1 text-gray-600 hover:text-primary-100 cursor-pointer"
       @click="updateValue(modelValue + 1)"
     >
       <IconPlus />

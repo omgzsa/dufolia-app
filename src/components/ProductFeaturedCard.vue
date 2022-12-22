@@ -1,18 +1,8 @@
 <script setup>
-import { ref } from "vue";
-import AppCountInput from "./AppCountInput.vue";
-
-// props
 defineProps({
   product: Object,
   imageLink: String,
 });
-
-// emits
-defineEmits(["addItems"]);
-
-// data
-const count = ref(1);
 </script>
 
 <template>
@@ -30,16 +20,15 @@ const count = ref(1);
         {{ product.attributes.description.slice(0, 60) }}...
       </p>
       <p class="font-bold mb-4">{{ product.attributes.price }} Ft</p>
-      <AppButton :to="`/products/${product.id}`" class="flex-1 mb-2">
+      <AppButton
+        :to="{
+          name: 'product.single',
+          params: { id: product.id, slug: product.attributes.slug },
+        }"
+        class="flex-1"
+      >
         Megnézem
       </AppButton>
-      <AppCountInput v-model="count" />
-      <button
-        class="bg-accent text-white font-semibold px-2 py-3 rounded"
-        @click="$emit('addItems', count), (count = 1)"
-      >
-        Add to Cart
-      </button>
     </div>
   </div>
 </template>

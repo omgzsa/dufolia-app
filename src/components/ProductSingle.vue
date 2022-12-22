@@ -1,8 +1,8 @@
 <script setup>
 import { ref } from "vue";
 import IconShoppingBag from "./IconShoppingBag.vue";
-import AppCountInput from "@/components/AppCountInput.vue";
 
+import TheBreadCrumbs from "./TheBreadCrumbs.vue";
 defineProps({
   product: Object,
   imageLink: String,
@@ -12,40 +12,39 @@ const count = ref(1);
 
 defineEmits(["addItems"]);
 </script>
+
 <template>
-  <div class="relative mx-auto max-w-screen-xl pt-24">
-    <div class="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
-      <div class="grid grid-cols-2 gap-4 md:grid-cols-1">
+  <section>
+    <div class="relative mx-auto max-w-screen-xl pt-24">
+      <TheBreadCrumbs />
+      <div class="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
         <img
-          alt=""
+          :alt="product?.attributes?.name"
           :src="`${imageLink}${product?.attributes?.image.data.attributes.url}`"
-          class="aspect-square w-full rounded-xl object-contain p-2 sm:p-4 md:p-10"
+          class="pt-10 max-w-sm lg:max-w-lg min-h-fit mx-auto rounded-xl object-contain"
         />
-      </div>
 
-      <div class="sticky top-0 pt-10">
-        <div class="mt-8">
-          <div class="max-w-[35ch]">
-            <h2 class="text-2xl font-bold">
-              {{ product?.attributes?.name }}
-            </h2>
-            <p class="text-xl font-normal">
-              {{ product?.attributes?.price }} Ft
-            </p>
+        <div class="sticky top-0">
+          <div class="mt-8">
+            <div class="max-w-[40ch]">
+              <h2 class="text-2xl md:text-4xl font-semibold">
+                {{ product?.attributes?.name }}
+              </h2>
+              <p class="text-lg md:text-2xl font-medium mb-6">
+                {{ product?.attributes?.price }} Ft
+              </p>
+            </div>
           </div>
-        </div>
 
-        <details class="group relative mt-4">
           <summary class="block">
             <div class="prose mb-4 max-w-none group-open:hidden">
-              <p>
+              <p class="text-sm md:text-base max-w-md">
                 {{ product?.attributes?.description }}
               </p>
             </div>
           </summary>
-        </details>
 
-        <!-- <fieldset>
+          <!-- <fieldset>
           <legend class="mb-1 text-sm font-medium">Color</legend>
 
           <div class="flow-root">
@@ -98,7 +97,7 @@ defineEmits(["addItems"]);
           </div>
         </fieldset> -->
 
-        <!-- <fieldset class="mt-4">
+          <!-- <fieldset class="mt-4">
           <legend class="mb-1 text-sm font-medium">Size</legend>
 
           <div class="flow-root">
@@ -181,16 +180,20 @@ defineEmits(["addItems"]);
           </div>
         </fieldset> -->
 
-        <div class="mt-8 flex">
-          <AppCountInput v-model="count" />
-          <button
-            class="flex items-center gap-2 bg-primary-200 text-white font-semibold px-4 py-2 rounded ml-4"
-            @click="$emit('addItems', count), (count = 1)"
-          >
-            <IconShoppingBag />Kosárba rakom
-          </button>
+          <div class="mt-8 flex">
+            <AppCountInput
+              v-model="count"
+              class="space-x-1 border border-primary-100 rounded-md px-4"
+            />
+            <button
+              class="flex items-center gap-2 bg-primary-200 text-white font-semibold px-4 py-2 rounded ml-4"
+              @click="$emit('addItems', count), (count = 1)"
+            >
+              <IconShoppingBag />Kosárba rakom
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>

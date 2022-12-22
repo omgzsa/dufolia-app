@@ -1,11 +1,9 @@
 <script setup>
-// import TheCart from "../components/TheCart.vue";
-
-// const imageLink = import.meta.env.VITE_STRAPI_URL;
+import TheCart from "../components/TheCart.vue";
 </script>
 
 <template>
   <div>
-    <!-- <TheCart :cart-items="cartItems" :image-link="imageLink" /> -->
+    <TheCart />
   </div>
 </template>

@@ -4,7 +4,7 @@
 
 @layer base {
   section {
-    @apply mb-16 sm:mb-24 px-4;
+    @apply mb-16 sm:mb-24 px-2;
   }
 
   h1 {
@@ -43,12 +43,12 @@
   transform: translateX(-5%);
 }
 
-.router-link-active > img,
+/* .router-link-active > img,
 .router-link-exact-active > img {
   @apply bg-white;
-}
+} */
 
 .router-link-active,
 .router-link-exact-active {
-  @apply border-accent bg-accent/20 md:bg-white md:border-l-0 font-semibold text-accent;
+  @apply border-accent md:bg-white md:border-l-0 font-semibold text-accent;
 }

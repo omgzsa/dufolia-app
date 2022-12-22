@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from "vue";
+import { useGetImageUrl } from "@/composables/getImageUrl";
 import ImageCarousel from "@/components/ImageCarousel.vue";
-import AppButton from "@/components/AppButton.vue";
 
 const slides = ref([
   { img: "hero1.jpg", alt: "first house" },
@@ -20,6 +20,13 @@ const slides = ref([
       </p>
       <AppButton :to="{ name: 'products' }"> Termékeink </AppButton>
     </div>
-    <ImageCarousel :slides="slides" />
+    <div
+      class="hidden md:flex flex-row gap-6 justify-around py-10 [&>*:nth-child(even)]:-mt-12"
+    >
+      <div v-for="slide in slides" :key="slide.img">
+        <img :src="useGetImageUrl(slide.img)" :alt="slide.alt" />
+      </div>
+    </div>
+    <ImageCarousel class="block md:hidden" :slides="slides" />
   </div>
 </template>
