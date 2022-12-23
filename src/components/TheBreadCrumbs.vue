@@ -8,10 +8,10 @@ const route = useRoute();
 </script>
 
 <template>
-  <nav aria-label="Breadcrumb" class="md:ml-5">
+  <nav aria-label="Breadcrumb" class="max-w-screen-xl">
     <ol
       role="list"
-      class="flex items-center gap-1 md:ml-5 text-sm text-gray-600"
+      class="flex text-xs md:text-sm items-center gap-1 text-gray-600"
     >
       <li class="flex items-center">
         <RouterLink :to="{ name: 'home' }" class="block hover:text-accent">
@@ -27,7 +27,10 @@ const route = useRoute();
           Termékek
         </RouterLink>
       </li>
-      <li class="flex items-center" v-if="route.name == 'product.single'">
+      <li
+        class="flex items-center text-xs md:text-sm"
+        v-if="route.name == 'product.single'"
+      >
         <IconArrowRight class="mr-2" />
 
         {{ route.params.slug }}

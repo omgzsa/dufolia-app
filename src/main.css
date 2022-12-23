@@ -3,8 +3,11 @@
 @tailwind utilities;
 
 @layer base {
+  main {
+    @apply px-2 sm:px-6 lg:px-8;
+  }
   section {
-    @apply mb-16 sm:mb-24 px-2;
+    @apply mb-16 sm:mb-24 mx-auto max-w-screen-xl;
   }
 
   h1 {

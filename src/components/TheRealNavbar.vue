@@ -50,7 +50,7 @@ onUnmounted(() => {
 
 <template>
   <nav
-    class="navbar md:flex md:justify-around md:items-center px-2"
+    class="navbar max-w-full md:flex md:justify-between md:items-center px-2 sm:px-6 lg:px-8"
     :class="{ 'navbar--hidden': !showNavbar }"
     ref="target"
   >

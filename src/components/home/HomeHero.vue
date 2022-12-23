@@ -11,7 +11,7 @@ const slides = ref([
 </script>
 
 <template>
-  <div>
+  <section>
     <div class="mx-auto text-center max-w-2xl py-16">
       <slot name="title"></slot>
       <p class="text-lg text-slate-500 font-semibold mb-12">
@@ -21,12 +21,12 @@ const slides = ref([
       <AppButton :to="{ name: 'products' }"> Termékeink </AppButton>
     </div>
     <div
-      class="hidden md:flex flex-row gap-6 justify-around py-10 [&>*:nth-child(even)]:-mt-12"
+      class="hidden md:flex flex-row gap-6 justify-between py-10 [&>*:nth-child(even)]:-mt-12"
     >
       <div v-for="slide in slides" :key="slide.img">
         <img :src="useGetImageUrl(slide.img)" :alt="slide.alt" />
       </div>
     </div>
     <ImageCarousel class="block md:hidden" :slides="slides" />
-  </div>
+  </section>
 </template>

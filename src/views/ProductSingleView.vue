@@ -1,7 +1,9 @@
 <script setup>
 import { ref, onBeforeMount } from "vue";
 import { useRoute } from "vue-router";
+
 import ProductSingle from "@/components/ProductSingle.vue";
+import TheBreadCrumbs from "../components/TheBreadCrumbs.vue";
 
 import { useCartStore } from "../stores/CartStore";
 
@@ -40,11 +42,17 @@ const getProduct = async () => {
 };
 </script>
 <template>
-  <div v-if="product">
+  <section>
+    <TheBreadCrumbs class="pt-20" />
+    <!-- <Suspense> -->
+    <!-- <template #default> -->
     <ProductSingle
       :product="product"
       :imageLink="imageLink"
       @addItems="cartStore.addItems($event, product)"
     />
-  </div>
+    <!-- </template> -->
+    <!-- <template #fallback>Loading...</template> -->
+    <!-- </Suspense> -->
+  </section>
 </template>

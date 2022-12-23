@@ -15,11 +15,12 @@ const image = "illustration-house.png";
 
 <template>
   <div
-    class="grid grid-cols-1 place-items-center gap-y-12 md:grid-cols-2 md:gap-y-0 md:gap-x-8"
+    class="grid grid-cols-1 place-items-center px-2 gap-y-12 md:grid-cols-2 md:gap-y-0 md:gap-x-16"
   >
     <img
       :src="useGetImageUrl(image)"
       alt="színes illusztráció egy családi házról"
+      class="self-start"
     />
     <div class="flex flex-col items-center md:block">
       <h2 class="text-center md:text-left">A modern házak szakértője</h2>

@@ -18,10 +18,10 @@ productStore.fill();
 </script>
 
 <template>
-  <section>
-    <TheBreadCrumbs class="pt-36" />
+  <section class="px-2">
+    <TheBreadCrumbs class="pt-24" />
     <div
-      class="container pt-24 mx-auto grid grid-flow-row gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+      class="pt-10 mx-auto grid grid-flow-row gap-10 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4"
     >
       <ProductArchiveCard
         class="mx-auto"

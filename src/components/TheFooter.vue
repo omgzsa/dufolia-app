@@ -1,10 +1,8 @@
 <script setup></script>
 
 <template>
-  <footer aria-label="Site Footer" class="bg-white">
-    <div
-      class="max-w-screen-xl px-4 py-16 mx-auto space-y-8 sm:px-6 lg:space-y-16 lg:px-8"
-    >
+  <footer aria-label="Site Footer" class="bg-white px-2 sm:px-6 lg:px-8">
+    <div class="max-w-screen-xl py-16 mx-auto space-y-8 lg:space-y-16">
       <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
         <div>
           <div class="text-teal-600">

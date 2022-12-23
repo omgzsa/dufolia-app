@@ -11,7 +11,7 @@ defineProps({
       name: 'product.single',
       params: { id: product.id, slug: product.attributes.slug },
     }"
-    class="max-w-xs block group transition-transform duration-300 hover:-translate-y-1"
+    class="max-w-xs md:max-w-sm block group transition-transform duration-300 hover:-translate-y-1"
   >
     <img
       :src="`${imageLink}${product.attributes.image.data.attributes.url}`"

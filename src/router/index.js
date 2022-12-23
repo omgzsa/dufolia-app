@@ -64,7 +64,7 @@ const router = createRouter({
     },
   ],
   scrollBehavior(to, from, savedPosition) {
-    return savedPosition || { top: 0, behavior: "smooth" };
+    return savedPosition || { behavior: "smooth" };
   },
 });
 

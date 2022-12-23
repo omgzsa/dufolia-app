@@ -35,7 +35,7 @@ const benefits = ref([
 <template>
   <div>
     <!-- HERO SECTION -->
-    <section class="max-w-screen-2xl mx-auto">
+    <section>
       <HomeHero>
         <template #title>
           <h1 class="mt-12">
@@ -45,22 +45,22 @@ const benefits = ref([
       </HomeHero>
     </section>
     <!-- FEATURED PRODUCTS -->
-    <section class="max-w-screen-2xl mx-auto">
+    <section>
       <h2 class="text-center mb-16">Kiemelt termékeink</h2>
-      <ProductFeatured class="px-2 py-2" :image-link="imageLink" />
+      <ProductFeatured :image-link="imageLink" />
     </section>
     <!-- CATEGORIES -->
-    <section class="max-w-screen-2xl mx-auto">
+    <section>
       <h2 class="text-center mb-16">Kategóriák</h2>
       <HomeCategoriesList :imageLink="imageLink" />
     </section>
     <!-- BENEFITS -->
-    <section class="max-w-screen-2xl mx-auto">
+    <section>
       <h2 class="text-center mb-16">Miért válaszd a Dufóliát?</h2>
       <HomeBenefitsList :benefits="benefits" />
     </section>
     <!-- PROFESSIONAL FEATURES -->
-    <section class="max-w-screen-2xl mx-auto">
+    <section>
       <HomeCallToAction />
     </section>
   </div>

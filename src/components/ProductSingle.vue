@@ -2,7 +2,6 @@
 import { ref } from "vue";
 import IconShoppingBag from "./IconShoppingBag.vue";
 
-import TheBreadCrumbs from "./TheBreadCrumbs.vue";
 defineProps({
   product: Object,
   imageLink: String,
@@ -15,17 +14,18 @@ defineEmits(["addItems"]);
 
 <template>
   <section>
-    <div class="relative mx-auto max-w-screen-xl pt-24">
-      <TheBreadCrumbs />
-      <div class="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
+    <div class="relative">
+      <div
+        class="grid grid-cols-1 items-start md:items-center gap-4 sm:grid-cols-2"
+      >
         <img
           :alt="product?.attributes?.name"
           :src="`${imageLink}${product?.attributes?.image.data.attributes.url}`"
-          class="pt-10 max-w-sm lg:max-w-lg min-h-fit mx-auto rounded-xl object-contain"
+          class="m-w-full lg:max-w-lg md:mt-4 max-h-64 md:max-h-96 mx-auto rounded-xl object-contain"
         />
 
         <div class="sticky top-0">
-          <div class="mt-8">
+          <div class="mt-4">
             <div class="max-w-[40ch]">
               <h2 class="text-2xl md:text-4xl font-semibold">
                 {{ product?.attributes?.name }}
@@ -38,7 +38,7 @@ defineEmits(["addItems"]);
 
           <summary class="block">
             <div class="prose mb-4 max-w-none group-open:hidden">
-              <p class="text-sm md:text-base max-w-md">
+              <p class="text-sm md:text-base md:max-w-md">
                 {{ product?.attributes?.description }}
               </p>
             </div>
@@ -183,10 +183,10 @@ defineEmits(["addItems"]);
           <div class="mt-8 flex">
             <AppCountInput
               v-model="count"
-              class="space-x-1 border border-primary-100 rounded-md px-4"
+              class="space-x-1 border border-primary-100 rounded-md px-3 md:px-4"
             />
             <button
-              class="flex items-center gap-2 bg-primary-200 text-white font-semibold px-4 py-2 rounded ml-4"
+              class="flex items-center gap-2 bg-primary-200 text-white font-semibold px-3 py-2 md:px-6 md:py-3 rounded ml-4"
               @click="$emit('addItems', count), (count = 1)"
             >
               <IconShoppingBag />Kosárba rakom
