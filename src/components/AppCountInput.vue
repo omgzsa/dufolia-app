@@ -1,6 +1,6 @@
 <script setup>
-import IconMinus from "@/components/IconMinus.vue";
-import IconPlus from "@/components/IconPlus.vue";
+import IconMinus from "./icons/IconMinus.vue";
+import IconPlus from "./icons/IconPlus.vue";
 defineProps({
   modelValue: { type: [Number, String], default: 0 },
 });
@@ -41,6 +41,6 @@ const updateValue = (value) => {
 input[type="number"] {
   appearance: none;
   -moz-appearance: textfield;
-  @apply w-4 text-sm font-semibold text-center rounded-md;
+  @apply w-4 text-sm font-medium text-center rounded-md;
 }
 </style>

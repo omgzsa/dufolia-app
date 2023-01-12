@@ -11,15 +11,36 @@
   }
 
   h1 {
-    @apply font-display font-bold text-4xl sm:text-6xl mb-8;
+    @apply font-display font-bold text-4xl sm:text-6xl mb-8 tracking-wide;
   }
 
   h2 {
-    @apply font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-8;
+    @apply font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-8 tracking-wide;
   }
 
   h3 {
-    @apply font-display font-bold text-lg sm:text-xl mb-2;
+    @apply font-display font-bold text-lg sm:text-xl mb-2 tracking-wide;
+  }
+
+  h4 {
+    @apply font-display font-semibold text-sm sm:text-base sm:pr-8;
+  }
+
+  /* 
+  LOADING SPINNER for async fetch
+  */
+
+  .spinner {
+    animation: spinner 0.5s linear infinite;
+    border: 2px solid #eee;
+    border-radius: 50%;
+    border-top-color: #00807c;
+  }
+
+  @keyframes spinner {
+    to {
+      transform: rotate(360deg);
+    }
   }
 }
 
@@ -46,12 +67,7 @@
   transform: translateX(-5%);
 }
 
-/* .router-link-active > img,
-.router-link-exact-active > img {
-  @apply bg-white;
-} */
-
 .router-link-active,
 .router-link-exact-active {
-  @apply border-accent md:bg-white md:border-l-0 font-semibold text-accent;
+  @apply md:bg-white md:border-l-0 font-semibold text-primary-100;
 }

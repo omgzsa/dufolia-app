@@ -1,5 +1,5 @@
 <script setup>
-import IconTrash from "./IconTrash.vue";
+import IconTrash from "./icons/IconTrash.vue";
 import { useGetProductImage } from "@/composables/useGetProductImage";
 
 defineProps({
@@ -16,17 +16,17 @@ defineEmits(["updateCount", "clear"]);
       <img
         class="flex-shrink-0 object-contain w-20 h-20 dark:border-transparent rounded outline-none md:w-24 md:h-24 dark:bg-gray-500"
         :src="useGetProductImage(product.attributes.image.data.attributes.url)"
-        alt="Polaroid camera"
+        :alt="product.attributes.name"
       />
       <div class="flex flex-col justify-between w-full pb-2">
         <div class="flex justify-between w-full pb-2 space-x-2">
           <div class="space-y-1">
-            <h4 class="text-sm font-medium sm:text-base leading-snug sm:pr-8">
+            <h4>
               {{ product.attributes.name }}
             </h4>
           </div>
           <div class="text-right flex flex-col w-1/3 items-end">
-            <p class="text-sm font-semibold sm:text-base">
+            <p class="text-sm font-medium sm:text-base">
               {{ count * product.attributes.price }} Ft
             </p>
             <AppCountInput
@@ -40,10 +40,10 @@ defineEmits(["updateCount", "clear"]);
           <button
             @click="$emit('clear')"
             type="button"
-            class="flex items-center px-2 py-1 pl-0 space-x-1 font-normal sm:font-medium tracking-widest uppercase text-xs text-gray-500 hover:text-primary-100"
+            class="flex items-center px-2 py-1 pl-0 space-x-1 font-normal sm:font-medium tracking-widest uppercase text-xs text-gray-500 hover:text-red-500"
           >
             <IconTrash class="text-sm" />
-            <span>Remove</span>
+            <span>Törlés</span>
           </button>
         </div>
       </div>

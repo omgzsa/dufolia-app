@@ -43,16 +43,16 @@ const getProduct = async () => {
 </script>
 <template>
   <section>
-    <TheBreadCrumbs class="pt-20" />
-    <!-- <Suspense> -->
-    <!-- <template #default> -->
-    <ProductSingle
-      :product="product"
-      :imageLink="imageLink"
-      @addItems="cartStore.addItems($event, product)"
-    />
-    <!-- </template> -->
-    <!-- <template #fallback>Loading...</template> -->
-    <!-- </Suspense> -->
+    <TheBreadCrumbs class="pt-20 pb-4" />
+    <div v-if="!loading">
+      <ProductSingle
+        :product="product"
+        :imageLink="imageLink"
+        @addItems="cartStore.addItems($event, product)"
+      />
+    </div>
+    <div v-else class="flex justify-center py-16 min-h-screen">
+      <div class="spinner w-8 h-8"></div>
+    </div>
   </section>
 </template>

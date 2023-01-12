@@ -1,8 +1,8 @@
 <script setup>
 import { RouterLink, useRoute } from "vue-router";
 
-import IconArrowRight from "./IconArrowRight.vue";
-import IconHome from "./IconHome.vue";
+import IconArrowRight from "./icons/IconArrowRight.vue";
+import IconHome from "./icons/IconHome.vue";
 
 const route = useRoute();
 </script>

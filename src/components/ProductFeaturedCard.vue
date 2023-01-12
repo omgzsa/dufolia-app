@@ -20,12 +20,13 @@ defineProps({
         {{ product.attributes.description.slice(0, 60) }}...
       </p>
       <p class="font-bold mb-4">{{ product.attributes.price }} Ft</p>
+
       <AppButton
         :to="{
           name: 'product.single',
           params: { id: product.id, slug: product.attributes.slug },
         }"
-        class="flex-1"
+        class="transition inline-block rounded border border-primary-100 bg-primary-100 py-3 font-medium text-white hover:bg-transparent hover:text-primary-100 focus:outline-none focus:ring active:text-primary-100"
       >
         Megnézem
       </AppButton>

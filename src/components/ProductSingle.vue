@@ -1,15 +1,15 @@
 <script setup>
 import { ref } from "vue";
-import IconShoppingBag from "./IconShoppingBag.vue";
+import IconShoppingBag from "./icons/IconShoppingBag.vue";
 
 defineProps({
   product: Object,
   imageLink: String,
 });
 
-const count = ref(1);
-
 defineEmits(["addItems"]);
+
+const count = ref(1);
 </script>
 
 <template>
@@ -180,16 +180,22 @@ defineEmits(["addItems"]);
           </div>
         </fieldset> -->
 
-          <div class="mt-8 flex">
+          <div class="mt-8 flex items-center">
             <AppCountInput
               v-model="count"
-              class="space-x-1 border border-primary-100 rounded-md px-3 md:px-4"
+              class="space-x-1 rounded-md px-3.5 py-2.5 mr-2 overflow-hidden relative group cursor-pointer border-2 font-medium border-primary-100"
             />
             <button
-              class="flex items-center gap-2 bg-primary-200 text-white font-semibold px-3 py-2 md:px-6 md:py-3 rounded ml-4"
+              class="rounded-md px-3.5 py-2 m-1 overflow-hidden relative group cursor-pointer border-2 font-medium border-primary-100 text-primary-100"
               @click="$emit('addItems', count), (count = 1)"
             >
-              <IconShoppingBag />Kosárba rakom
+              <span
+                class="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-primary-100 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"
+              ></span>
+              <span
+                class="flex flex-row gap-2 relative text-primary-100 transition duration-300 group-hover:text-white ease"
+                ><IconShoppingBag />Kosárba rakom</span
+              >
             </button>
           </div>
         </div>

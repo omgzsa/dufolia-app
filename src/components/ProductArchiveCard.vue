@@ -14,7 +14,7 @@ defineProps({
     class="max-w-xs md:max-w-sm block group transition-transform duration-300 hover:-translate-y-1"
   >
     <img
-      :src="`${imageLink}${product.attributes.image.data.attributes.url}`"
+      :src="`${imageLink}${product.attributes.image.data.attributes.formats.thumbnail.url}`"
       :alt="product.attributes.name"
       class="w-full rounded aspect-square px-10 py-10 max-h-64 bg-primary-100/10 h-fit object-contain"
     />

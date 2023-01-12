@@ -27,12 +27,6 @@ const router = createRouter({
       meta: {
         breadcrumb: "products",
       },
-      // children: [
-      //   {
-      //     path: "/products/:id",
-      //     component: () => import("../views/ProductSingleView.vue"),
-      //   },
-      // ],
     },
     {
       path: "/products/:id/:slug",
@@ -41,7 +35,8 @@ const router = createRouter({
       meta: {
         breadcrumb: "product",
       },
-      // beforeEnter(to, from) {
+      // async beforeEnter(to) {
+      //   const productStore = useProductStore();
       //   const exists = productStore.products.find(
       //     (product) => product.id === to.params.id
       //   );
@@ -49,11 +44,43 @@ const router = createRouter({
       // },
     },
     {
+      path: "/user",
+      name: "user",
+      component: () => import("../views/UserView.vue"),
+      meta: {
+        breadcrumb: "user",
+      },
+    },
+    {
+      path: "/login",
+      name: "login",
+      component: () => import("../views/LoginView.vue"),
+      meta: {
+        breadcrumb: "login",
+      },
+    },
+    // {
+    //   path: "/register",
+    //   name: "register",
+    //   component: () => import("../views/RegisterView.vue"),
+    //   meta: {
+    //     breadcrumb: "register",
+    //   },
+    // },
+    {
       path: "/cart",
       name: "cart",
       component: () => import("../views/CartView.vue"),
       meta: {
         breadcrumb: "cart",
+      },
+    },
+    {
+      path: "/checkout",
+      name: "checkout",
+      component: () => import("../views/CheckoutView.vue"),
+      meta: {
+        breadcrumb: "checkout",
       },
     },
 
@@ -64,7 +91,15 @@ const router = createRouter({
     },
   ],
   scrollBehavior(to, from, savedPosition) {
-    return savedPosition || { behavior: "smooth" };
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        if (savedPosition) {
+          resolve(savedPosition);
+        } else {
+          resolve({ top: 0, behavior: "smooth" });
+        }
+      }, 600);
+    });
   },
 });
 

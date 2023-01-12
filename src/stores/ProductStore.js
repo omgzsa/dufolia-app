@@ -10,15 +10,29 @@ export const useProductStore = defineStore("ProductStore", {
       products: [],
       // product: {},
       productsFeatured: [],
+      loading: false,
     };
   },
 
   actions: {
     async fill() {
+      this.loading = true;
       this.products = await fetch(apiUrl + "/api/products?populate=*")
         .then((res) => res.json())
         .then((data) => (this.products = data.data))
         .catch((err) => (error.value = console.log(err)));
+      this.loading = false;
+    },
+    async fillArchive() {
+      this.loading = true;
+      this.products = await fetch(
+        apiUrl +
+          "/api/products?fields=name,description,price,slug&populate=image"
+      )
+        .then((res) => res.json())
+        .then((data) => (this.products = data.data))
+        .catch((err) => (error.value = console.log(err)));
+      this.loading = false;
     },
     async fillFeatured() {
       this.productsFeatured = await fetch(

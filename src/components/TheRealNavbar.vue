@@ -9,9 +9,10 @@ import { onClickOutside } from "@vueuse/core";
 import { useCartStore } from "../stores/CartStore";
 
 // icons
-import IconMagnify from "./IconMagnify.vue";
-import IconMenu from "./IconMenu.vue";
-import IconShoppingBag from "./IconShoppingBag.vue";
+import IconMagnify from "./icons/IconMagnify.vue";
+import IconMenu from "./icons/IconMenu.vue";
+import IconShoppingBag from "./icons/IconShoppingBag.vue";
+import IconAccount from "./icons/IconAccount.vue";
 
 const image = "dufolia-logo.png";
 const cartStore = useCartStore();
@@ -50,13 +51,14 @@ onUnmounted(() => {
 
 <template>
   <nav
-    class="navbar max-w-full md:flex md:justify-between md:items-center px-2 sm:px-6 lg:px-8"
+    class="navbar max-w-full md:flex md:items-center px-2 sm:px-6 lg:px-8"
     :class="{ 'navbar--hidden': !showNavbar }"
     ref="target"
   >
+    <!-- MOBILE MENU -->
     <div class="flex items-center justify-between space-x-2 py-2">
-      <!-- LOGO -->
-      <AppLink to="/">
+      <!-- MOBILE LOGO -->
+      <AppLink to="/" class="mr-auto">
         <img
           :src="useGetImageUrl(image)"
           alt="Dufolia logo"
@@ -64,23 +66,19 @@ onUnmounted(() => {
         />
       </AppLink>
 
-      <!-- CART BUTTON -->
-      <div class="order-2 md:hidden flex flex-row items-center">
-        <AppLink
-          :to="{ name: 'cart', path: '/cart' }"
-          class="flex flex-row items-center"
-        >
-          <IconShoppingBag class="mr-1" />
+      <!-- MOBILE CART -->
+      <div class="sm:p-1 order-2 md:hidden flex flex-row items-center">
+        <AppLink :to="{ name: 'cart', path: '/cart' }">
           <span
-            class="text-base font-semibold"
+            class="text-base font-semibold flex flex-row items-center"
             :class="{ 'text-accent': cartStore.count !== 0 }"
-            >{{ cartStore.count }}</span
+            ><IconShoppingBag class="mr-1" /> {{ cartStore.count }}</span
           >
         </AppLink>
       </div>
 
-      <!-- MOBILE MENU BUTTON -->
-      <div @click="toggleNav" class="flex md:hidden order-3 pr-2">
+      <!-- MOBILE MENU -->
+      <div @click="toggleNav" class="sm:p-1 flex md:hidden order-4">
         <button
           type="button"
           class="text-gray-800 hover:text-gray-500 focus:outline-none focus:text-gray-500 pl-1"
@@ -89,19 +87,18 @@ onUnmounted(() => {
         </button>
       </div>
 
-      <!-- SEARCH BAR -->
-      <div class="m-w-36 relative md:hidden">
-        <div
-          class="absolute inset-y-0 left-0 flex items-center pl-2 pointer-events-none"
-        >
-          <IconMagnify />
-        </div>
-        <input
-          type="text"
-          id="search-navbar"
-          class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder="Search..."
-        />
+      <!-- MOBILE USER -->
+      <div class="sm:p-1 order-3 md:hidden">
+        <AppLink :to="{ name: 'user' }">
+          <IconAccount
+            class="text-gray-700 hover:font-semibold hover:text-primary-100"
+          />
+        </AppLink>
+      </div>
+
+      <!-- MOBILE SEARCH -->
+      <div class="sm:p-1 md:hidden">
+        <IconMagnify />
       </div>
     </div>
 
@@ -109,52 +106,51 @@ onUnmounted(() => {
     <ul
       @click="closeMenu"
       :class="showMenu ? 'flex' : 'hidden'"
-      class="flex-col py-2 space-y-4 md:flex md:space-y-0 md:flex-row md:items-center md:space-x-10 md:mt-0"
+      class="ml-auto flex-col py-2 space-y-4 md:flex md:space-y-0 md:flex-row md:items-center md:space-x-4 lg:space-x-12 md:mt-0"
     >
       <AppLink
         :to="{ name: 'home', path: '/' }"
-        class="border-transparent text-gray-500 block pl-3 pr-4 py-2 border-l-4 hover:font-semibold hover:text-accent"
+        class="border-transparent text-gray-500 block pr-4 py-2 border-l-4 hover:font-semibold hover:text-primary-100"
         >Kezdőoldal</AppLink
       >
       <AppLink
         :to="{ name: 'about', path: '/about' }"
-        class="border-transparent text-gray-500 block pl-3 pr-4 py-2 border-l-4 hover:font-semibold hover:text-accent"
+        class="border-transparent text-gray-500 block pr-4 py-2 border-l-4 hover:font-semibold hover:text-primary-100"
         >Rólunk</AppLink
       >
       <AppLink
         :to="{ name: 'products', path: '/products' }"
-        class="border-transparent text-gray-500 block pl-3 pr-4 py-2 border-l-4 hover:font-semibold hover:text-accent"
+        class="border-transparent text-gray-500 block pr-4 py-2 border-l-4 hover:font-semibold hover:text-primary-100"
         >Termékek</AppLink
       >
     </ul>
 
-    <!-- SEARCH BAR - DESKTOP -->
-    <div class="relative hidden md:block">
-      <div
-        class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
-      >
+    <!-- RIGHT ICONS - search/cart/profile -->
+    <div class="md:flex md:space-y-0 md:flex-row md:items-center ml-auto">
+      <!-- SEARCH BAR - DESKTOP -->
+      <div class="relative hidden md:block p-1">
         <IconMagnify />
       </div>
-      <input
-        type="text"
-        id="search-navbar"
-        class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        placeholder="Search..."
-      />
-    </div>
 
-    <div class="order-3 md:block hidden">
-      <AppLink
-        :to="{ name: 'cart', path: '/cart' }"
-        class="flex flex-row items-center"
-      >
-        <IconShoppingBag class="mr-1" />
-        <span
-          class="text-base font-semibold"
-          :class="{ 'text-accent': cartStore.count !== 0 }"
-          >{{ cartStore.count }}</span
-        >
-      </AppLink>
+      <!-- SHOPPING CART - DESKTOP -->
+      <div class="md:block hidden p-1">
+        <AppLink :to="{ name: 'cart', path: '/cart' }">
+          <span
+            class="text-base font-semibold flex flex-row items-center text-gray-900"
+            :class="{ 'text-accent': cartStore.count !== 0 }"
+            ><IconShoppingBag class="mr-1" />{{ cartStore.count }}</span
+          >
+        </AppLink>
+      </div>
+
+      <!-- USER - DESKTOP -->
+      <div class="hidden md:block pl-1 py-1">
+        <AppLink :to="{ name: 'user' }">
+          <IconAccount
+            class="text-gray-700 hover:font-semibold hover:text-primary-100"
+          />
+        </AppLink>
+      </div>
     </div>
   </nav>
 </template>

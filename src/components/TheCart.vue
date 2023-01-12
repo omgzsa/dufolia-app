@@ -2,22 +2,25 @@
 // import { ref } from 'vue';
 import { useCartStore } from "../stores/CartStore";
 import TheCartItem from "./TheCartItem.vue";
-import IconShoppingBag from "@/components/IconShoppingBag.vue";
-// import IconRedo from "@/components/IconRedo.vue";
-// import IconUndo from "@/components/IconUndo.vue";
+// import IconShoppingBag from "@/components/IconShoppingBag.vue";
+import AppLink from "./AppLink.vue";
+// import IconRedo from "./icons/IconRedo.vue";
+// import IconUndo from "./icons/IconUndo.vue";
 const cartStore = useCartStore();
 </script>
 
 <template>
-  <div class="flex mx-auto relative flex-col max-w-2xl space-y-4 sm:p-10">
+  <div
+    class="flex mx-auto relative flex-col max-w-md sm:max-w-2xl space-y-4 sm:p-10"
+  >
     <div
-      class="flex flex-col max-w-3xl py-6 space-y-4 sm:p-10 dark:bg-gray-900 dark:text-gray-100"
+      class="flex flex-col py-6 space-y-4 sm:p-10 dark:bg-gray-900 dark:text-gray-100"
     >
-      <h2 class="text-xl font-semibold">Your cart</h2>
-      <div class="flex flex-row">
+      <h2 class="text-2xl tracking-wide font-semibold">Kosár</h2>
+      <!-- <div class="flex flex-row">
         <IconShoppingBag class="mr-2" />
         <span class="text-base font-semibold">{{ cartStore.count }}</span>
-      </div>
+      </div> -->
       <!-- CART LIST -->
       <div v-if="!cartStore.isEmpty">
         <ul class="flex flex-col divide-y divide-gray-300">
@@ -51,31 +54,43 @@ const cartStore = useCartStore();
       <!-- TOTAL AMOUNT -->
       <div class="space-y-1 text-right">
         <p>
-          Total amount:
+          Teljes összeg:
           <span class="font-semibold">{{ cartStore.cartTotal }} Ft</span>
         </p>
-        <p class="text-sm dark:text-gray-400">
-          Not including taxes and shipping costs
+        <p class="text-xs sm:text-sm text-gray-400">
+          Az ár az áfá-t és a szállítási költséget nem tartalmazza.
         </p>
       </div>
 
       <!-- CLEAR / CHECKOUT -->
-      <div class="flex justify-end space-x-4">
+      <div class="flex justify-end">
         <button
           @click="cartStore.clearCart"
           type="button"
-          class="px-6 py-2 border rounded-md dark:border-violet-400"
+          class="text-xs sm:text-base rounded-md px-3.5 py-2 m-1 overflow-hidden relative group cursor-pointer border-2 font-medium border-gray-400 text-gray-400 text-white"
         >
-          Clear
-          <span class="sr-only sm:not-sr-only">the cart</span>
+          <span
+            class="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-gray-400 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"
+          ></span>
+          <span
+            class="relative text-gray-400 transition duration-300 group-hover:text-white ease"
+            >Kosár kiürítése</span
+          >
+          <!-- <span class="sr-only sm:not-sr-only">the cart</span> -->
         </button>
-        <button
+        <AppLink
           type="button"
-          @click="cartStore.checkout"
-          class="px-6 py-2 border rounded-md dark:bg-violet-400 dark:text-gray-900 dark:border-violet-400"
+          :to="{ name: 'checkout' }"
+          class="text-xs sm:text-base rounded-md px-3.5 py-2 m-1 overflow-hidden relative group cursor-pointer border-2 font-medium border-primary-100 text-primary-100 text-white"
         >
-          <span class="sr-only sm:not-sr-only">Continue to</span>Checkout
-        </button>
+          <span
+            class="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-primary-100 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"
+          ></span>
+          <span
+            class="relative text-primary-100 transition duration-300 group-hover:text-white ease"
+            >Tovább a fizetéshez</span
+          >
+        </AppLink>
       </div>
     </div>
   </div>
