@@ -14,17 +14,18 @@ const cartStore = useCartStore();
   plugins: [require('@tailwindcss/forms')]
 -->
 
-    <h1 class="sr-only">Checkout</h1>
+    <h1 class="sr-only">Összegzés</h1>
 
     <div class="grid grid-cols-1 mx-auto max-w-screen-2xl md:grid-cols-2">
-      <div class="py-12 bg-gray-50 md:py-24">
+      <!-- CHECKOUT -->
+      <div class="py-12 bg-gray-50 md:py-16">
         <div class="max-w-lg px-4 mx-auto space-y-8 lg:px-8">
           <div class="flex items-center">
-            <h2 class="font-medium text-gray-900">Checkout</h2>
+            <h2 class="font-medium text-gray-900 tracking-tight">Összegzés</h2>
           </div>
 
           <div>
-            <p class="text-2xl font-medium tracking-tight text-gray-900">
+            <p class="text-2xl font-medium text-gray-900">
               {{ cartStore.cartTotal }} Ft
             </p>
 
@@ -63,7 +64,8 @@ const cartStore = useCartStore();
         </div>
       </div>
 
-      <div class="py-12 bg-white md:py-24">
+      <!-- FORM -->
+      <div class="py-12 bg-white md:py-16">
         <div class="max-w-lg px-4 mx-auto lg:px-8">
           <form class="grid grid-cols-6 gap-4">
             <div class="col-span-3">
@@ -71,7 +73,7 @@ const cartStore = useCartStore();
                 for="FirstName"
                 class="block text-xs font-medium text-gray-700"
               >
-                First Name
+                Keresztnév
               </label>
 
               <input
@@ -86,7 +88,7 @@ const cartStore = useCartStore();
                 for="LastName"
                 class="block text-xs font-medium text-gray-700"
               >
-                Last Name
+                Vezetéknév
               </label>
 
               <input
@@ -116,7 +118,7 @@ const cartStore = useCartStore();
                 for="Phone"
                 class="block text-xs font-medium text-gray-700"
               >
-                Phone
+                Telefon
               </label>
 
               <input
@@ -128,7 +130,7 @@ const cartStore = useCartStore();
 
             <fieldset class="col-span-6">
               <legend class="block text-sm font-medium text-gray-700">
-                Card Details
+                Kártya adatok
               </legend>
 
               <div class="mt-1 -space-y-px bg-white rounded-md shadow-sm">

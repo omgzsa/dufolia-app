@@ -54,6 +54,11 @@
     margin: 0;
     -webkit-appearance: none;
   }
+
+  .disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
 }
 
 .slide-enter-active,

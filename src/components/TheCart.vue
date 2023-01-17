@@ -34,7 +34,7 @@ const cartStore = useCartStore();
           />
         </ul>
       </div>
-      <div v-else><em>Cart is Empty</em></div>
+      <div v-else><em>A kosár üres</em></div>
 
       <!-- <div class="flex items-center justify-end">
         <button
@@ -66,6 +66,7 @@ const cartStore = useCartStore();
       <div class="flex justify-end">
         <button
           @click="cartStore.clearCart"
+          :class="{ disabled: !cartStore.cartItems.length }"
           type="button"
           class="text-xs sm:text-base rounded-md px-3.5 py-2 m-1 overflow-hidden relative group cursor-pointer border-2 font-medium border-gray-400 text-gray-400 text-white"
         >
@@ -81,6 +82,7 @@ const cartStore = useCartStore();
         <AppLink
           type="button"
           :to="{ name: 'checkout' }"
+          :class="{ disabled: !cartStore.cartItems.length }"
           class="text-xs sm:text-base rounded-md px-3.5 py-2 m-1 overflow-hidden relative group cursor-pointer border-2 font-medium border-primary-100 text-primary-100 text-white"
         >
           <span

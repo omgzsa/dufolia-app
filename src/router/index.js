@@ -59,14 +59,6 @@ const router = createRouter({
         breadcrumb: "login",
       },
     },
-    // {
-    //   path: "/register",
-    //   name: "register",
-    //   component: () => import("../views/RegisterView.vue"),
-    //   meta: {
-    //     breadcrumb: "register",
-    //   },
-    // },
     {
       path: "/cart",
       name: "cart",
