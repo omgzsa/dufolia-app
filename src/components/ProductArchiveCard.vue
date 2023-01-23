@@ -11,7 +11,7 @@ defineProps({
       name: 'product.single',
       params: { id: product.id, slug: product.attributes.slug },
     }"
-    class="max-w-xs md:max-w-sm block group transition-transform duration-300 hover:-translate-y-1"
+    class="max-w-xs xl:max-w-sm block group transition-transform duration-300 hover:-translate-y-1"
   >
     <img
       :src="`${imageLink}${product.attributes.image.data.attributes.formats.thumbnail.url}`"
@@ -21,13 +21,13 @@ defineProps({
 
     <div class="mt-3">
       <h3
-        class="font-medium text-primary-100 group-hover:underline group-hover:underline-offset-4"
+        class="font-display font-medium tracking-tight md:text-lg lg:text-xl xl:text-lg text-primary-100 group-hover:underline group-hover:underline-offset-4"
       >
         {{ product.attributes.name }}
       </h3>
 
       <p class="mt-1 text-sm text-gray-700">
-        {{ product.attributes.description.slice(0, 75) }}...
+        {{ product.attributes.description.slice(0, 65) }}...
       </p>
       <p class="mt-1 text-md font-medium text-gray-700">
         {{ product.attributes.price }} Ft

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onBeforeMount } from "vue";
+import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 
 import ProductSingle from "@/components/ProductSingle.vue";
@@ -26,7 +26,7 @@ const url = import.meta.env.VITE_STRAPI_URL;
 
 const apiUrl = url + "/api/products/" + route.params.id + "?populate=*";
 
-onBeforeMount(() => {
+onMounted(() => {
   getProduct();
 });
 
