@@ -15,12 +15,12 @@ export const useFilterStore = defineStore("FilterStore", {
     },
   },
   getters: {
-    ascendingOrder: () => {
+    ascendingByPrice: () => {
       productStore.products.sort((a, b) =>
         a.attributes.price > b.attributes.price ? 1 : -1
       );
     },
-    descendingOrder: () => {
+    descendingByPrice: () => {
       productStore.products.sort((a, b) =>
         a.attributes.price < b.attributes.price ? 1 : -1
       );

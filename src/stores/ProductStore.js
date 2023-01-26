@@ -30,7 +30,7 @@ export const useProductStore = defineStore("ProductStore", {
       this.loading = true;
       this.products = await fetch(
         apiUrl +
-          "/api/products?fields=name,description,price,slug&populate=image"
+          "/api/products?fields=name,description,price,slug&populate=image,category"
       )
         .then((res) => res.json())
         .then((data) => (this.products = data.data))
