@@ -1,11 +1,8 @@
 import { ref } from "vue";
 import { acceptHMRUpdate, defineStore } from "pinia";
-// import { useFilterStore } from "./FilterStore";
 
 const error = ref(null);
 const apiUrl = import.meta.env.VITE_STRAPI_URL;
-
-// const filterStore = useFilterStore();
 
 export const useProductStore = defineStore("ProductStore", {
   state: () => {
