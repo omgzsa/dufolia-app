@@ -1,6 +1,8 @@
 import { ref } from "vue";
 import { defineStore } from "pinia";
 
+// import { useProductStore } from "./ProductStore";
+
 const error = ref(null);
 const apiUrl = import.meta.env.VITE_STRAPI_URL;
 

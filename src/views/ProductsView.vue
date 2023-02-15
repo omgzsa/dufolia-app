@@ -1,48 +1,42 @@
 <script setup>
+import { ref, computed } from "vue";
 import { useProductStore } from "@/stores/ProductStore";
-// import { useCategoryStore } from "@/stores/CategoryStore";
+
 import IconDown from "../components/icons/IconDown.vue";
 import IconUp from "../components/icons/IconUp.vue";
 import ProductArchiveCard from "../components/ProductArchiveCard.vue";
 import ProductFilters from "../components/ProductFilters.vue";
 
 const imageLink = import.meta.env.VITE_STRAPI_URL;
+const selected = ref([]);
 
 const productStore = useProductStore();
-// const categoryStore = useCategoryStore();
-
 productStore.fillArchive();
-// categoryStore.fill();
 
-// const handleCheckboxEvent = (categoryId) => {
-//   if (checkedCategories.value.includes(categoryId)) {
-//     checkedCategories.value = checkedCategories.value.filter(
-//       (id) => id !== categoryId
-//     );
-//   } else {
-//     checkedCategories.value.push(categoryId);
-//   }
-// };
-
-// const filteredProducts = computed(() => {
-//   if (checkedCategories.value.length === 0) {
-//     return productStore.products;
-//   } else {
-//     return productStore.products.filter((product) =>
-//       checkedCategories.value.some(
-//         (categoryId) => categoryId === product.attributes.category.data.id
-//       )
-//     );
-//   }
-// });
+const filteredProducts = computed(() => {
+  if (selected.value.length === 0) {
+    return productStore.products;
+  } else {
+    return productStore.products.filter((product) =>
+      selected.value.some(
+        (categoryId) => categoryId === product.attributes.category.data.id
+      )
+    );
+  }
+});
+const handleCheck = (e) => {
+  selected.value = e;
+  return selected.value;
+};
 </script>
 
 <template>
   <section class="px-2 flex flex-col xl:flex-row">
+    <!-- order by category -->
     <div class="pt-24 xl:pt-36 xl:w-1/4 relative">
-      <!-- order by category -->
-      <ProductFilters />
+      <ProductFilters @changeCheck="handleCheck" />
     </div>
+    <!-- {{ filteredProducts }} -->
     <div v-if="!productStore.loading">
       <!-- order by price -->
       <div class="pt-6 xl:pt-24 pb-2">
@@ -64,11 +58,12 @@ productStore.fillArchive();
       >
         <ProductArchiveCard
           class="mx-auto"
-          v-for="product in productStore.products"
+          v-for="product in filteredProducts"
           :key="product.name"
           :product="product"
           :imageLink="imageLink"
         />
+        <!-- productStore.products.filter(p => p.attributes.category.data.id === 1)" -->
       </div>
     </div>
     <div v-else class="flex justify-center py-16 min-h-screen">

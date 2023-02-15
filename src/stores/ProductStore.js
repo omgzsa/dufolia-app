@@ -1,4 +1,5 @@
 import { ref } from "vue";
+// import { useCategoryStore } from "./CategoryStore";
 import { acceptHMRUpdate, defineStore } from "pinia";
 
 const error = ref(null);
@@ -58,6 +59,7 @@ export const useProductStore = defineStore("ProductStore", {
         a.attributes.price < b.attributes.price ? 1 : -1
       );
     },
+    filterByCategory() {},
   },
 
   getters: {
