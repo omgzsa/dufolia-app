@@ -12,7 +12,7 @@ defineProps({
   >
     <div class="relative">
       <img
-        :src="`${imageLink}${category.attributes.image.data.attributes.url}`"
+        :src="`${imageLink}${category.attributes.image?.data?.attributes.url}`"
         :alt="category.attributes.name"
         class="rounded-full max-h-52 sm:max-h-64"
       />

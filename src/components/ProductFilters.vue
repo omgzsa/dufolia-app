@@ -1,28 +1,31 @@
 <script setup>
-import { ref } from "vue";
-import { useCategoryStore } from "../stores/CategoryStore";
+// import { ref } from "vue";
+import { useCategoryStore } from "@/stores/CategoryStore";
 
 const categoryStore = useCategoryStore();
 categoryStore.fill();
 
-const checkedCategories = ref([]);
+const emit = defineEmits(["changeCheck"]);
+
+const changeCheck = function (e) {
+  emit("changeCheck", categoryStore.selectedCategories);
+  console.log(e.target.value);
+};
 </script>
+
 <template>
-  <div class="flex flex-col items-stretch">
+  <div>
     <label
       v-for="category in categoryStore.categories"
-      :for="category.attributes.name"
       :key="category.id"
-      class="text-sm pb-0.5"
-    >
-      <input
+      class="text-sm flex flex-row items-center gap-1.5"
+      ><input
         type="checkbox"
-        :id="category.attributes.name"
         :value="category.attributes.name"
-        v-model="checkedCategories"
-      />
-      {{ category.attributes.name }}
-    </label>
+        v-model="categoryStore.selectedCategories"
+        @input="changeCheck"
+      />{{ category.attributes.name }}</label
+    >
+    {{ categoryStore.selectedCategories }}
   </div>
-  <!-- <pre>{{ checkedCategories }}</pre> -->
 </template>

@@ -19,7 +19,7 @@ const updateValue = (value) => {
       class="text-xs p-1 cursor-pointer text-gray-600 hover:text-primary-100"
       @click="updateValue(modelValue > 0 ? modelValue - 1 : null)"
     >
-      <IconMinus class="" />
+      <IconMinus />
     </button>
     <input
       class="no-spinner"

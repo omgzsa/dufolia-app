@@ -17,10 +17,6 @@ const cartStore = useCartStore();
       class="flex flex-col py-6 space-y-4 sm:p-10 dark:bg-gray-900 dark:text-gray-100"
     >
       <h2 class="text-2xl tracking-wide font-semibold">Kosár</h2>
-      <!-- <div class="flex flex-row">
-        <IconShoppingBag class="mr-2" />
-        <span class="text-base font-semibold">{{ cartStore.count }}</span>
-      </div> -->
       <!-- CART LIST -->
       <div v-if="!cartStore.isEmpty">
         <ul class="flex flex-col divide-y divide-gray-300">
@@ -66,7 +62,7 @@ const cartStore = useCartStore();
       <div class="flex justify-end">
         <button
           @click="cartStore.clearCart"
-          :class="{ disabled: !cartStore.cartItems.length }"
+          :class="{ disabled: !cartStore.count }"
           type="button"
           class="text-xs sm:text-base rounded-md px-3.5 py-2 m-1 overflow-hidden relative group cursor-pointer border-2 font-medium border-gray-400 text-gray-400 text-white"
         >
@@ -82,7 +78,7 @@ const cartStore = useCartStore();
         <AppLink
           type="button"
           :to="{ name: 'checkout' }"
-          :class="{ disabled: !cartStore.cartItems.length }"
+          :class="{ disabled: !cartStore.count }"
           class="text-xs sm:text-base rounded-md px-3.5 py-2 m-1 overflow-hidden relative group cursor-pointer border-2 font-medium border-primary-100 text-primary-100 text-white"
         >
           <span

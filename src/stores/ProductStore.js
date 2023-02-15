@@ -27,7 +27,7 @@ export const useProductStore = defineStore("ProductStore", {
       this.loading = true;
       this.products = await fetch(
         apiUrl +
-          "/api/products?fields=name,description,price,slug&populate=image,category"
+          "/api/products?fields=name,featured,description,price,slug&populate=image,category"
       )
         .then((res) => res.json())
         .then((data) => (this.products = data.data))
@@ -48,10 +48,24 @@ export const useProductStore = defineStore("ProductStore", {
     //     .then((data) => (this.product = data))
     //     .catch((err) => (error.value = console.log(err)));
     // },
+    ascendingPrice() {
+      this.products.sort((a, b) =>
+        a.attributes.price > b.attributes.price ? 1 : -1
+      );
+    },
+    descendingPrice() {
+      this.products.sort((a, b) =>
+        a.attributes.price < b.attributes.price ? 1 : -1
+      );
+    },
   },
 
   getters: {
-    //
+    count: (state) => state.products.length,
+    getFeatured: (state) =>
+      state.products.filter((product) => {
+        return product.attributes.featured === true;
+      }),
   },
 });
 

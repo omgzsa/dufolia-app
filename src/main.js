@@ -1,4 +1,5 @@
 import { createApp } from "vue";
+import App from "./App.vue";
 import { createPinia } from "pinia";
 
 // axios
@@ -6,7 +7,6 @@ import VueAxios from "vue-axios";
 import axios from "axios";
 
 //  app & router
-import App from "./App.vue";
 import router from "./router";
 
 // css
@@ -29,6 +29,7 @@ app.component("AppCountInput", AppCountInput);
 
 app.use(VueAxios, axios);
 app.use(pinia);
+// app.use(createPinia());
 app.use(router);
 app.provide("axios", app.config.globalProperties.axios);
 
