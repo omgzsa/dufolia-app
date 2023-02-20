@@ -45,10 +45,12 @@ export const useProductStore = defineStore("ProductStore", {
         .catch((err) => (error.value = console.log(err)));
     },
     // async getProduct(productId) {
+    //   this.loading = true;
     //   this.product = await fetch(apiUrl + "/api/products/" + productId)
     //     .then((res) => res.json())
     //     .then((data) => (this.product = data))
     //     .catch((err) => (error.value = console.log(err)));
+    //   this.loading = false;
     // },
     ascendingPrice() {
       this.products.sort((a, b) =>
