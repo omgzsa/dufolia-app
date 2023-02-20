@@ -21,7 +21,7 @@ defineProps({
 
     <div class="mt-3">
       <h3
-        class="font-display font-medium tracking-tight md:text-lg lg:text-xl xl:text-lg text-primary-100 group-hover:underline group-hover:underline-offset-4"
+        class="font-display font-medium tracking-tight md:text-lg text-primary-100 group-hover:underline group-hover:underline-offset-4"
       >
         {{ product.attributes.name }}
       </h3>

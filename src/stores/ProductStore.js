@@ -12,6 +12,7 @@ export const useProductStore = defineStore("ProductStore", {
       // product: {},
       productsFeatured: [],
       loading: false,
+      selected: [],
     };
   },
 

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from "vue";
+import { computed } from "vue";
 import { useProductStore } from "@/stores/ProductStore";
 
 import IconDown from "../components/icons/IconDown.vue";
@@ -8,25 +8,24 @@ import ProductArchiveCard from "../components/ProductArchiveCard.vue";
 import ProductFilters from "../components/ProductFilters.vue";
 
 const imageLink = import.meta.env.VITE_STRAPI_URL;
-const selected = ref([]);
 
 const productStore = useProductStore();
 productStore.fillArchive();
 
 const filteredProducts = computed(() => {
-  if (selected.value.length === 0) {
+  if (productStore.selected.length === 0) {
     return productStore.products;
   } else {
     return productStore.products.filter((product) =>
-      selected.value.some(
+      productStore.selected.some(
         (categoryId) => categoryId === product.attributes.category.data.id
       )
     );
   }
 });
 const handleCheck = (e) => {
-  selected.value = e;
-  return selected.value;
+  productStore.selected = e;
+  return productStore.selected;
 };
 </script>
 
@@ -54,7 +53,7 @@ const handleCheck = (e) => {
         </button>
       </div>
       <div
-        class="mx-auto grid grid-flow-row gap-10 md:gap-10 lg:gap-16 xl:gap-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4"
+        class="mx-auto grid grid-flow-row gap-10 md:gap-7 lg:gap-6 xl:gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
       >
         <ProductArchiveCard
           class="mx-auto"
