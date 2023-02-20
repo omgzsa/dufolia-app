@@ -40,7 +40,7 @@ defineEmits(["updateCount", "clear"]);
           <button
             @click="$emit('clear')"
             type="button"
-            class="flex items-center px-2 py-1 pl-0 space-x-1 font-normal sm:font-medium tracking-widest uppercase text-xs text-gray-500 hover:text-red-500"
+            class="flex items-center px-2 py-1 pl-0 space-x-1 font-normal sm:font-medium tracking-widest uppercase text-xs text-gray-500 hover:text-red-500 hover:font-semibold"
           >
             <IconTrash class="text-sm" />
             <span>Törlés</span>
