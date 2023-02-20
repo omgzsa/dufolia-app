@@ -1,5 +1,4 @@
 <script setup>
-import { onMounted } from "vue";
 import { useCategoryStore } from "@/stores/CategoryStore";
 
 const categoryStore = useCategoryStore();
@@ -10,9 +9,6 @@ const emit = defineEmits(["changeCheck"]);
 const changeCheck = function () {
   emit("changeCheck", categoryStore.selectedCategories);
 };
-onMounted(() => {
-  //
-});
 </script>
 
 <template>

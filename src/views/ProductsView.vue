@@ -32,13 +32,13 @@ const handleCheck = (e) => {
 <template>
   <section class="px-2 flex flex-col xl:flex-row">
     <!-- order by category -->
-    <div class="pt-24 xl:pt-36 xl:w-1/4 relative">
+    <div class="pt-24 mr-auto xl:pt-36 xl:w-1/4 relative">
       <ProductFilters @changeCheck="handleCheck" />
     </div>
     <!-- {{ filteredProducts }} -->
     <div v-if="!productStore.loading">
       <!-- order by price -->
-      <div class="pt-6 xl:pt-24 pb-2">
+      <div class="xl:pt-24 pb-2">
         <button
           @click="productStore.ascendingPrice"
           class="text-sm flex flex-row items-center ml-auto"

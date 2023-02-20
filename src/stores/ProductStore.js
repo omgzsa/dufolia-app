@@ -60,7 +60,6 @@ export const useProductStore = defineStore("ProductStore", {
         a.attributes.price < b.attributes.price ? 1 : -1
       );
     },
-    filterByCategory() {},
   },
 
   getters: {
