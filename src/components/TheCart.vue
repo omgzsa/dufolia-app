@@ -10,7 +10,9 @@ const cartStore = useCartStore();
 </script>
 
 <template>
-  <div class="flex mx-auto relative flex-col max-w-sm space-y-4 sm:p-10">
+  <div
+    class="flex mx-auto relative flex-col max-w-md sm:max-w-2xl space-y-4 sm:p-10"
+  >
     <div
       class="flex flex-col py-6 space-y-4 sm:p-10 dark:bg-gray-900 dark:text-gray-100"
     >
